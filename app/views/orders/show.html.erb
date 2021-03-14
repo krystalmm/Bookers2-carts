@@ -1,0 +1,12 @@
+<h1>注文詳細</h1>
+
+<p>注文日: <%= @order.created_at.strftime("%Y/%m/%d") %></p>
+<p>
+    配送先: 〒<%= @order.postcode %> <br>
+    <%= @order.address %>
+    <%= @order.address_name %>
+</p>
+<p>注文商品: OrderProductモデルを使用する！！！</p>
+<p>ステータス: <%= @order.order_status %></p>
+<p>支払い方法: <%= @order.payment_selection %></p>
+<p>配送料: <%= @order.postage %></p>

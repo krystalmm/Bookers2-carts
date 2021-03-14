@@ -1,0 +1,22 @@
+<h1>注文情報確認</h1>
+
+<% @carts.each do |cart| %>
+  <p>商品名: <%= cart.book.title %></p>
+<% end %>
+
+<p>支払い方法: <%= @order.payment_selection %></p>
+<p>
+  お届け先: <%= @order.postcode %><%= @order.address %> <br>
+  <%= @order.address_name %>
+</p>
+<p>配送料: <%= @order.postage %></p>
+
+<%= form_with model: @order, local: true do |f| %>
+  <%= f.hidden_field :payment_selection %>
+  <%= f.hidden_field :postcode %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :address_name %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :postage %>
+  <%= f.submit "注文を確定する", class: 'btn btn-success' %>
+<% end %>

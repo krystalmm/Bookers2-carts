@@ -1,6 +1,9 @@
 <h1>注文情報入力</h1>
 
-<%= form_with model: @order, local: true do |f| %>
+<%= form_with(model: @order, url: {action: 'confirm'}, local: true) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :postage, value: 0 %>
+
   <div class="form-group">
     <%= f.label :payment_selection, "支払い方法" %> <br>
     <%= f.radio_button :payment_selection, :クレジットカード, default: true %>
