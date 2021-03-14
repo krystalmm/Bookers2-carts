@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+
+    <div class="text-danger">
+      <% if @book.errors.any? %>
+        <%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:
+        <li>
+          <% @book.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        </li>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Editing Book</h2>
+      <%= form_with model:@book, local: true do |f| %>
+      <div class="form-group">
+        <label for="book_title">
+          Title
+        </label>
+        <p>
+          <%= f.text_field :title %>
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="book_opinion">
+          Opinion
+        </label>
+        <p>
+          <%= f.text_field :body %>
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="book_genre">
+          Book Genre
+        </label>
+        <p><%= f.select :book_genre, Book.book_genres.keys.map {|k| [k, k]}, {}, { class: 'form-control', style: 'margin-bottom: 15px;', data: {} } %></p>
+      </div>
+      <div class="form-group">
+        <p><%= f.submit 'Update Book' %></p>
+      </div>
+      <% end %>
+      
+      <p>
+        <%= link_to "Show", book_path(@book) %>
+        |
+        <%= link_to "Back", books_path %>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<%= form_with model:book, url: books_path, local:true do |f| %>
+  <div class="form-group">
+    <label for="book_title">
+      Title
+    </label>
+    <p><%= f.text_field :title %></p>
+  </div>
+  <div class="form-group">
+    <label for="book_opinion">
+      Opinion
+    </label>
+    <p><%= f.text_field :body %></p>
+  </div>
+  <div class="form-group">
+    <label for="book_genre">
+      Book Genre
+    </label>
+    <p><%= f.select :book_genre, Book.book_genres.keys.map {|k| [k, k]}, {}, { class: 'form-control', style: 'margin-bottom: 15px;', data: {} } %></p>
+  </div>
+  <div class="form-group">
+    <p><%= f.submit 'Create Book', class:"btn btn-success" %></p>
+  </div>
+<% end %>

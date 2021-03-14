@@ -1,0 +1,31 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th>Genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @carts.each do |cart| %>
+    <tr>
+      <td>
+        <%= link_to (attachment_image_tag cart.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"), user_path(cart.user.id) %>
+      </td>
+      <td>
+        <%= link_to cart.book.title, book_path(cart.book.id) %>
+      </td>
+      <td>
+        <%= cart.book.body %>
+      </td>
+      <td>
+        <%= cart.book.book_genre %>
+      </td>
+      <td>
+        コメント数:<%= cart.book.book_comments.count %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

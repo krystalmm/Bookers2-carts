@@ -1,0 +1,45 @@
+<% provide(:title, @title) %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3><%= @title %></h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @users.present? %>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <%= attachment_image_tag user.follower, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+                </td>
+                <td>
+                  <%= user.follower.name %>
+                </td>
+                <td>
+                  <p>フォロー数:</p><%= @following_count %>
+                </td>
+                <td>
+                  <p>フォロワー数:</p><%= @followers_count %>
+                </td>
+                <td>
+                  <%= link_to "Show", user_path(user.follower.id) %>
+                </td>
+            <% end %>
+          <% else %>
+              <td>
+                <p>フォローされているユーザーはいません</p>
+              </td>
+          <% end %>
+            </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

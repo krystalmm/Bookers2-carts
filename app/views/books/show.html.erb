@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <%= render 'shares/error_message', error: @book_comment %>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <h2>User info</h2>
+      <%= render 'shares/userinfo', user: @book.user %>
+      <h2>New book</h2>
+      <%= render 'shares/listnewbook', book: @new_book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <%= render 'show', book: @book, cart: @cart %>
+      <div id="comments_area">
+        <%= render 'book_comments/book_comment_list', book: @book, book_comments: @book_comments %>
+      </div>
+      <%= render 'book_comments/book_comment_form', book: @book, book_comment: @book_comment %>
+    </div>
+  </div>
+</div>

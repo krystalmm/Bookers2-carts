@@ -1,0 +1,28 @@
+<div class="container">
+  <div container="row">
+    <%= render 'shares/error_message', error: @user %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>User info</h1>
+      <%= form_with model:@user, local:true do |f| %>
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <%= f.text_field :name, autofocus: true, id:"inputName",placeholder:"Name" %>
+      </div>
+      <div class="form-group">
+        <label for="inputImage">Image</label>
+        <%= f.attachment_field :profile_image %>
+      </div>
+      <div class="form-group">
+        <label for="inputIntroduction">Introduction</label>
+        <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction",placeholder:"Introduction" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Update User" %>
+      </div>
+      <% end %> 
+    </div>
+  </div>
+</div>

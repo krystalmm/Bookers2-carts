@@ -1,0 +1,7 @@
+<% unless user == current_user %>
+  <% if current_user.following?(user) %>
+    <%= link_to 'unfollow', unfollow_path(user.id), method: :POST, class:"btn btn-secondary" %>
+  <% else %>
+    <%= link_to 'follow', follow_path(user.id), method: :POST, class:"btn btn-primary" %>
+  <% end %>
+<% end %>
