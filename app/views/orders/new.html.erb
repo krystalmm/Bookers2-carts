@@ -1,0 +1,26 @@
+<h1>注文情報入力</h1>
+
+<%= form_with model: @order, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :payment_selection, "支払い方法" %> <br>
+    <%= f.radio_button :payment_selection, :クレジットカード, default: true %>
+    <%= f.label :クレジットカード %> <br>
+    <%= f.radio_button :payment_selection, :銀行振込 %>
+    <%= f.label :銀行振込 %>
+  </div>
+  <div class="form-group">
+    <p>お届け先</p>
+    <p>住所選択ラジオボタン</p>
+    <p>新しいお届け先</p>
+    <div class="col-5">
+      <%= f.label :postcode, "郵便番号" %>
+      <%= f.text_field :postcode, class: 'form-control' %>
+      <%= f.label :address, "住所" %>
+      <%= f.text_field :address, class: 'form-control' %>
+      <%= f.label :address_name, "宛名" %>
+      <%= f.text_field :address_name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= f.submit "確認画面へ進む" %>
+<% end %>

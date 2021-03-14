@@ -36,7 +36,14 @@ Rails.application.routes.draw do
   # ——————カート内機能——————————————————————————
   resources :carts, only: [:index, :create, :update, :destroy]
   # ————————————————————————————————————————————
-  
+
+  resources :orders, only: [:new, :create, :index, :show] do
+    collection do
+      get :confirm
+      get :success
+    end
+  end
+
   resources :books, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
